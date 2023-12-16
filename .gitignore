@@ -1,7 +1,12 @@
+# Node.js
 node_modules/
 dist/
 
 # Logs
+logs/
+
+# dotenv environment variables file
+.env
 
 # macOS
 .DS_Store
