@@ -15,3 +15,10 @@ MAILER_SECRET_KEY=
 
 PROD=false
 ```
+
+3.- Ejecutar el comando `npm install`
+4.- Ejecutar el proyecto `npm run dev`
+
+## Obtener Gmail key
+
+[Google AppPasswords](https://myaccount.google.com/u/0/apppasswords)
