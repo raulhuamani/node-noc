@@ -10,3 +10,7 @@ logs/
 
 # macOS
 .DS_Store
+
+
+# BD Temporal
+/mongo

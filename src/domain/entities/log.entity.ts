@@ -26,8 +26,15 @@ export class LogEntity {
   }
 
   static fromJson = (json: string): LogEntity => {
+    json = json === "" ? "{}" : json;
     const { message, level, createdAt, origin } = JSON.parse(json);
     //if (!message) throw new Error("Invalid log");
+    const log = new LogEntity({ message, level, createdAt, origin });
+    return log;
+  };
+
+  static fromObject = (object: { [key: string]: any }): LogEntity => {
+    const { message, origin, level, createdAt } = object;
     const log = new LogEntity({ message, level, createdAt, origin });
     return log;
   };
