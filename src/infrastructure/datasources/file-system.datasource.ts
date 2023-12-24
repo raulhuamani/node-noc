@@ -48,7 +48,7 @@ export class FileSystemDatasource implements LogDatasource {
     return logs;
   };
 
-  async getLog(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
+  async getLogs(severityLevel: LogSeverityLevel): Promise<LogEntity[]> {
     switch (severityLevel) {
       case LogSeverityLevel.low:
         return this.getLogsFromFile(this.allLogsPath);

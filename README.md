@@ -17,7 +17,19 @@ PROD=false
 ```
 
 3.- Ejecutar el comando `npm install`
-4.- Ejecutar el proyecto `npm run dev`
+4.- Levantar las base de datos con el comando
+
+```
+docker compose up -d
+```
+
+5.- Ejecutar el comando
+
+```
+npx prisma migrate dev
+```
+
+6.- Ejecutar el proyecto `npm run dev`
 
 ## Obtener Gmail key
 
