@@ -29,7 +29,12 @@ export class LogEntity {
     json = json === "" ? "{}" : json;
     const { message, level, createdAt, origin } = JSON.parse(json);
     //if (!message) throw new Error("Invalid log");
-    const log = new LogEntity({ message, level, createdAt, origin });
+    const log = new LogEntity({
+      message,
+      level,
+      createdAt: new Date(createdAt),
+      origin,
+    });
     return log;
   };
 

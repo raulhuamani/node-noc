@@ -34,14 +34,14 @@ export class Server {
 
     //  console.log(envs);
 
-    CronService.createJob("*/5 * * * * *", () => {
-      const url = "https://archlinux.org/";
-      // const url = "http://localhost:3000";
-      new CheckServiceMultiple(
-        [fsLogRepository, mongoLogRepository, postgresLogRepository],
-        () => console.log(`${url} is ok`),
-        (error) => console.error(error)
-      ).execute(url);
-    });
+    // CronService.createJob("*/5 * * * * *", () => {
+    //   const url = "https://archlinux.org/";
+    //   // const url = "http://localhost:3000";
+    //   new CheckServiceMultiple(
+    //     [fsLogRepository, mongoLogRepository, postgresLogRepository],
+    //     () => console.log(`${url} is ok`),
+    //     (error) => console.error(error)
+    //   ).execute(url);
+    // });
   }
 }

@@ -10,19 +10,19 @@ export class FileSystemDatasource implements LogDatasource {
   private readonly highLogsPath = "logs/logs-high.log";
 
   constructor() {
-    this.createLogsFile();
+    this.createLogsFiles();
   }
 
-  private createLogsFile = () => {
+  private createLogsFiles = () => {
     if (!fs.existsSync(this.logPath)) {
       fs.mkdirSync(this.logPath);
     }
 
     [this.allLogsPath, this.mediumLogsPath, this.highLogsPath].forEach(
       (path) => {
-        if (!fs.existsSync(path)) {
-          fs.writeFileSync(path, "");
-        }
+        if (fs.existsSync(path)) return;
+
+        fs.writeFileSync(path, "");
       }
     );
   };
@@ -33,6 +33,7 @@ export class FileSystemDatasource implements LogDatasource {
     fs.appendFileSync(this.allLogsPath, logAsJson);
 
     if (newLog.level === LogSeverityLevel.low) return;
+
     if (newLog.level === LogSeverityLevel.medium) {
       fs.appendFileSync(this.mediumLogsPath, logAsJson);
     } else {
@@ -41,7 +42,7 @@ export class FileSystemDatasource implements LogDatasource {
   }
 
   private getLogsFromFile = (path: string): LogEntity[] => {
-    const content = fs.readFileSync(path, "utf8");
+    const content = fs.readFileSync(path, "utf-8");
     if (content === "") return [];
     // const logs = content.split("\n").map((log) => LogEntity.fromJson(log));
     const logs = content.split("\n").map(LogEntity.fromJson);
@@ -57,7 +58,7 @@ export class FileSystemDatasource implements LogDatasource {
       case LogSeverityLevel.high:
         return this.getLogsFromFile(this.highLogsPath);
       default:
-        throw new Error(`${severityLevel} is not implemented`);
+        throw new Error(`${severityLevel} not implemented`);
     }
   }
 }

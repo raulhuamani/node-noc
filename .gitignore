@@ -15,3 +15,5 @@ logs/
 # BD Temporal
 /mongo
 /postgres
+/mongo-test
+/postgres-test
